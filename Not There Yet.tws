@@ -37,7 +37,7 @@ p18
 (dp20
 S'text'
 p21
-VThe first thing that you can remeber is pain. \u000a\u000aPain in your head, pain in your back, pain in your legs; It's as if your whole body was made of pain. \u000a\u000aYou can feel sunlight on your face and you can taste dust as you struggle to breath without feeling more pain. You think to yourself that you should see where you are so you slowly [[open your eyes|Bunker]] to see where you are.
+VThe first thing that you can remeber is pain. \u000a\u000aPain in your head, pain in your back, pain in your legs; It's as if your whole body was made of pain. \u000a\u000aYou can feel sunlight on your face and you can taste dust as you struggle to breathe without feeling more pain. You think to yourself that you should see where you are so you slowly [[open your eyes|Bunker]] to see where you are.
 p22
 sS'title'
 p23
@@ -50,12 +50,12 @@ struct_time
 p26
 ((I2014
 I10
-I6
-I17
-I45
-I33
-I0
-I279
+I14
+I21
+I21
+I40
+I1
+I287
 I1
 tp27
 (dp28
@@ -243,7 +243,7 @@ Tiddler
 p85
 (dp86
 g21
-VYour eyes open reluctently, and you are instantly blinded by light streaming through a hole above you. You are laying in a pile of rubble around you so it's safe to assume that hole is where you came from. You prop your self up, a pain shooting up your back, to gather in your surroundings. You scan the room to see a [[dirty looking bed|Bed]], a [[shelf with assorted boxes|Shelf]], a [[tattered newspaper|Newspaper]], and a large, [[metal door|Bunker Door]]. You slowly and painfully get up and decide to explore your confines to acertain where you are.<<set $haveBeackpack = false; $haveKnife = false; $haveCrowbar = false>>
+VYour eyes open reluctantly, and you are instantly blinded by light streaming through a hole above you. You are laying in a pile of rubble around you so it's safe to assume that hole is where you came from. You prop your self up, a pain shooting up your back, to gather in your surroundings. You scan the room to see a [[dirty looking bed|Bed]], a [[shelf with assorted boxes|Shelf]], a [[tattered newspaper|Newspaper]], and a large, [[metal door|Bunker Door]]. You slowly and painfully get up and decide to explore your confines to ascertain where you are.<<set $haveBeackpack = false; $haveKnife = false; $haveCrowbar = false>>
 p87
 sg23
 VBunker
@@ -252,12 +252,12 @@ sg25
 g26
 ((I2014
 I10
-I6
-I17
-I46
-I25
-I0
-I279
+I14
+I21
+I22
+I20
+I1
+I287
 I1
 tp89
 (dp90

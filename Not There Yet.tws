@@ -37,7 +37,7 @@ p18
 (dp20
 S'text'
 p21
-VThe first thing that you can remeber is pain. \u000a\u000aPain in your head, pain in your back, pain in your legs; It's as if your whole body was made of pain. \u000a\u000aYou can feel sunlight on your face and you can taste dust as you struggle to breathe without feeling more pain. You think to yourself that you should see where you are so you slowly [[open your eyes|Bunker]] to see where you are.
+VThe first thing that you can remember is pain. \u000a\u000aPain in your head, pain in your back, pain in your legs; It's as if your whole body was made of pain. \u000a\u000aYou can feel sunlight on your face and you can taste dust as you struggle to breathe without feeling more pain. You think to yourself that you should see where you are so you slowly [[open your eyes|Bunker]] to see where you are.
 p22
 sS'title'
 p23
@@ -50,12 +50,12 @@ struct_time
 p26
 ((I2014
 I10
-I14
-I21
-I21
-I40
-I1
-I287
+I15
+I17
+I53
+I56
+I2
+I288
 I1
 tp27
 (dp28
@@ -385,8 +385,8 @@ g14
 I00
 sg15
 (lp129
-F648.0039840637447
-aF133.8525896414348
+F705.6494023904386
+aF99.04780876494073
 asg17
 (itiddlywiki
 Tiddler

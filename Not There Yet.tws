@@ -545,7 +545,7 @@ Tiddler
 p176
 (dp177
 g21
-V<<nobr>><<if not previous("Lower Path")>>A sharp pain hits your eyes as the sunlight floods your vision causing you to close your eyes. After awhile your vision adjustsletting you open your eyes without it being painful. You gather in your surrounding and take a deep breath of fresh air. Looking around you notice more and more about your surroundings. You appear to be on the roof of a building in some city you do not recognize. The walls around you are broken and crumbling giving you a good view of your surroundings. You see several long abandonded buildings around you and the street below is litered with rusty car shells and plant growth. When you finish admirig the view you look around to find a way to proceed. You notice an old, broken sign on a wall that reads "Quarintine Zone" the rest is an arrow pointing away and how far away it is, however the part where it says ow many miles away it is has been grapphitied over to read "Not There Yet". You follow to where the arrow points and find yourself with a choice. There are two doorways before you one seems to be leading [[downward|Lower Path]] and another leads onto the building [[roof|Upper Path]].<<else if previous("Lower Path")>>You head back up the stairs to the room you were in before and head to the <<if visited("Upper Path")>>[[roof|Bridge]]<<else>>[[roof|Upper Path]].<<endif>><<else if previous("Upper Path")>>You head back through the door and down the small flight of stairs to return to the room you were in before. You keep going and head down the <<if visited("Lower Path")>>[[stairs|Lobby]]<<else>>[[stairs|Lower Path]].<<endif>><<endif>><<endnobr>>
+VA sharp pain hits your eyes as the sunlight floods your vision causing you to close your eyes. After awhile your vision adjustsletting you open your eyes without it being painful. You gather in your surrounding and take a deep breath of fresh air. Looking around you notice more and more about your surroundings. You appear to be on the roof of a building in some city you do not recognize. The walls around you are broken and crumbling giving you a good view of your surroundings. You see several long abandonded buildings around you and the street below is litered with rusty car shells and plant growth. When you finish admirig the view you look around to find a way to proceed. You notice an old, broken sign on a wall that reads "Quarintine Zone" the rest is an arrow pointing away and how far away it is, however the part where it says ow many miles away it is has been grapphitied over to read "Not There Yet". You follow to where the arrow points and find yourself with a choice. There are two doorways before you one seems to be leading [[downward|Lower Path]] and another leads onto the building [[roof|Upper Path]]. For some reason something in the back of your mind says that you can't return after making a choice.
 p178
 sg23
 VForked Road
@@ -553,14 +553,14 @@ p179
 sg25
 g26
 ((I2014
-I10
-I27
-I16
-I55
-I59
+I11
+I3
+I17
+I39
+I41
 I0
-I300
-I1
+I307
+I0
 tp180
 (dp181
 tp182
@@ -776,7 +776,7 @@ Tiddler
 p246
 (dp247
 g21
-V<<nobr>>You head up a couple stairs and go through a door to find yourself on the buildings rooftop. You hae a better view of everything around you including what seems to be a bridge to the next building over caused by a wall falling over. It looks very unstable but you think it will be able to hold your weight. You consider your options and you can either [[head back|Forked Road]], or head across the [[bridge|Bridge]].<<endnobr>>
+V<<nobr>>You head up a couple stairs and go through a door to find yourself on the buildings rooftop. You hae a better view of everything around you including what seems to be a bridge to the next building over caused by a wall falling over. It looks very unstable but you think it will be able to hold your weight. You consider your options and head across the [[bridge|Bridge]].<<endnobr>>
 p248
 sg23
 VUpper Path
@@ -784,14 +784,14 @@ p249
 sg25
 g26
 ((I2014
-I10
-I27
-I16
-I51
-I18
+I11
+I3
+I17
+I40
+I3
 I0
-I300
-I1
+I307
+I0
 tp250
 (dp251
 tp252
@@ -815,7 +815,7 @@ tp257
 Rp258
 sbsa(dp259
 g14
-I00
+I01
 sg15
 (lp260
 F1479.1752988047804
@@ -826,7 +826,7 @@ Tiddler
 p261
 (dp262
 g21
-V<<nobr>>You carefuly head down the stairs to the lower floors. You decide to keep going down and reach the road to see if there are more signs to point you in the right direction. Almost at the bottom the stairs become broken. There doesn't seem to be a way back if you go down so you decide to either [[head down|Lobby]] or [[go back|Forked Road]].<<endnobr>>
+VYou carefuly head down the stairs to the lower floors. You decide to keep going down and reach the road to see if there are more signs to point you in the right direction. Almost at the bottom the stairs become broken. There doesn't seem to be a way back if you go down so you decide to [[head down|Lobby]]
 p263
 sg23
 VLower Path
@@ -834,14 +834,14 @@ p264
 sg25
 g26
 ((I2014
-I10
-I27
-I16
-I31
+I11
 I3
+I17
+I40
+I37
 I0
-I300
-I1
+I307
+I0
 tp265
 (dp266
 tp267

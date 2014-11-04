@@ -343,7 +343,7 @@ Tiddler
 p115
 (dp116
 g21
-V<<nobr>><<if previous() is "Bunker">>Your joints ache as your prop yourself up and shamble over to the large, metal door. <<endif>> Looming before you is a large, rusted door. You guess this is your ticket to freedom and step up to it in order to open it. You struggle to try to turn the valve-like handle at the center of it but it refuses to budge. Observing it closely you can see that with a proper tool you can perhaps pry the door open. <<if not $haveKnife or not $haveBackpack or not $haveCrowbar>>You turn around and head back to see if you can find something near <<if not $haveBackpack>>the [[bed|Bed]]<<endif>><<if not $haveKnife>><<if not $haveBackpack>>, <<if $haveCrowbar>>or <<endif>>the [[shelf|Shelf]]<<endif>><<endif>><<if not $haveCrowbar>><<if not $haveKnife or not $haveBackpack>>, or <<endif>>the [[newspaper|Newspaper]].<<endif>><<else>>You take out your crowbar from the backpack and use it on the door. After a bit of pushing and pulling the door finally creaks open. You open it and head [[outside|Forked Road]]<<endif>><<endnobr>>
+V<<nobr>><<if previous() is "Bunker">>Your joints ache as your prop yourself up and shamble over to the large, metal door. <<endif>> Looming before you is a large, rusted door. You guess this is your ticket to freedom and step up to it in order to open it. You struggle to try to turn the valve-like handle at the center of it but it refuses to budge. Observing it closely you can see that with a proper tool you can perhaps pry the door open. <<if not $haveKnife or not $haveBackpack or not $haveCrowbar>>You turn around and head back to see if you can find something near the <<actions "Bed" "Shelf" "Newspaper">><<else>>You take out your crowbar from the backpack and use it on the door. After a bit of pushing and pulling the door finally creaks open. You open it and head [[outside|Forked Road]]<<endif>><<endnobr>>
 p117
 sg23
 VBunker Door
@@ -351,14 +351,14 @@ p118
 sg25
 g26
 ((I2014
-I10
-I13
-I18
-I48
-I53
+I11
+I3
+I19
+I31
+I23
 I0
-I286
-I1
+I307
+I0
 tp119
 (dp120
 tp121
@@ -675,19 +675,19 @@ g21
 V(function () {\u000a  "use strict";\u000a  version.extensions['soundMacros'] = {\u000a    major: 1,\u000a    minor: 1,\u000a    revision: 2\u000a  };\u000a  var p = macros['playsound'] = {\u000a    soundtracks: {},\u000a    handler: function (a, b, c, d) {\u000a      var loop = function (m) {\u000a          if (m.loop == undefined) {\u000a            m.loopfn = function () {\u000a              this.play();\u000a            };\u000a            m.addEventListener('ended', m.loopfn, 0);\u000a          } else m.loop = true;\u000a          m.play();\u000a          };\u000a      var s = eval(d.fullArgs());\u000a      if (s) {\u000a        s = s.toString();\u000a        var m = this.soundtracks[s.slice(0, s.lastIndexOf("."))];\u000a        if (m) {\u000a          if (b == "playsound") {\u000a            m.play();\u000a          } else if (b == "loopsound") {\u000a            loop(m);\u000a          } else if (b == "pausesound") {\u000a            m.pause();\u000a          } else if (b == "unloopsound") {\u000a            if (m.loop != undefined) {\u000a              m.loop = false;\u000a            } else if (m.loopfn) {\u000a              m.removeEventListener('ended', m.loopfn);\u000a              delete m.loopfn;\u000a            }\u000a          } else if (b == "stopsound") {\u000a            m.pause();\u000a            m.currentTime = 0;\u000a          } else if (b == "fadeoutsound" || b == "fadeinsound") {\u000a            if (m.interval) clearInterval(m.interval);\u000a            if (b == "fadeinsound") {\u000a              if (m.currentTime>0) return;\u000a              m.volume = 0;\u000a              loop(m);\u000a            } else {\u000a              if (!m.currentTime) return;\u000a              m.play();\u000a            }\u000a            var v = m.volume;\u000a            m.interval = setInterval(function () {\u000a              v = Math.min(1, Math.max(0, v + 0.005 * (b == "fadeinsound" ? 1 : -1)));\u000a              m.volume = Math.easeInOut(v);\u000a              if (v == 0 || v == 1) clearInterval(m.interval);\u000a              if (v == 0) {\u000a                m.pause();\u000a                m.currentTime = 0;\u000a                m.volume = 1;\u000a              }\u000a            }, 10);\u000a          }\u000a        }\u000a      }\u000a    }\u000a  }\u000a  macros['fadeinsound'] = p;\u000a  macros['fadeoutsound'] = p;\u000a  macros['unloopsound'] = p;\u000a  macros['loopsound'] = p;\u000a  macros['pausesound'] = p;\u000a  macros['stopsound'] = p;\u000a  macros['stopallsound'] = {\u000a    handler: function () {\u000a      var s = macros.playsound.soundtracks;\u000a      for (var j in s) {\u000a		if (s.hasOwnProperty(j)) {\u000a          s[j].pause();\u000a          if (s[j].currentTime) {\u000a		    s[j].currentTime = 0;\u000a		  }\u000a		}\u000a      }\u000a    }\u000a  }\u000a  var div = document.getElementById("storeArea").firstChild;\u000a  var fe = ["ogg", "mp3", "wav", "webm"];\u000a  while (div) {\u000a    var b = String.fromCharCode(92);\u000a    var q = '"';\u000a    var re = "['" + q + "]([^" + q + "']*?)" + b + ".(ogg|mp3|wav|webm)['" + q + "]";\u000a    k(new RegExp(re, "gi"));\u000a    div = div.nextSibling;\u000a  }\u000a\u000a  function k(c, e) {\u000a    do {\u000a      var d = c.exec(div.innerHTML);\u000a      if (d) {\u000a        var a = new Audio();\u000a        if (a.canPlayType) {\u000a          for (var i = -1; i < fe.length; i += 1) {\u000a            if (i >= 0) d[2] = fe[i];\u000a            if (a.canPlayType("audio/" + d[2])) break;\u000a          }\u000a          if (i < fe.length) {\u000a            a.setAttribute("src", d[1] + "." + d[2]);\u000a            a.interval = null;\u000a            macros.playsound.soundtracks[d[1]] = a;\u000a          } else console.log("Browser can't play '" + d[1] + "'");\u000a        }\u000a      }\u000a    } while (d);\u000a  }\u000a}());
 p216
 sg23
-VScript 1
+Vmusic script
 p217
 sg25
 g26
 ((I2014
-I10
-I20
+I11
+I3
 I19
-I5
-I16
+I48
+I12
 I0
-I293
-I1
+I307
+I0
 tp218
 (dp219
 tp220
@@ -926,12 +926,29 @@ Tiddler
 p291
 (dp292
 g21
-V
+VThe rubble bridge creaks and makes disconcerting noises as you slowly shuffle along it. "Don't look down Don't look down" repeats in your head, but of course your eyes stray to the ground far below you. A large pang on terror erupts in the back of your head as you speed up to get across. As soon as your feet touch the other side the bridge crumbles behind you. "That was close" you say to yourself wiping the sweat off your forehead. Your nerves return as you scan the room. The room is covered im plant growth and littered with rubble from the roof and walls. The walls have many holes in them that look like you can fit through and peering trough you see that you can kep going across the roof. Making sure your backpack is secure you [[squeeze through|Fire Escape]].
 p293
 sg23
 VBridge
 p294
 sg25
+g26
+((I2014
+I11
+I3
+I19
+I46
+I28
+I0
+I307
+I0
+tp295
+(dp296
+tp297
+Rp298
+sg31
+(lp299
+sg33
 g26
 ((I2014
 I10
@@ -942,32 +959,28 @@ I23
 I0
 I300
 I1
-tp295
-(dp296
-tp297
-Rp298
-sg31
-(lp299
-sg33
-g298
-sbsa(dp300
+tp300
+(dp301
+tp302
+Rp303
+sbsa(dp304
 g14
 I00
 sg15
-(lp301
+(lp305
 F1658.665338645418
 aF615.609561752987
 asg17
 (itiddlywiki
 Tiddler
-p302
-(dp303
+p306
+(dp307
 g21
 VYou peer into a dusty door window to see what looks like beady red eyes. <<set $insanity += 10>> They send chills down your spine as they dissapear instantly.
-p304
+p308
 sg23
 VEyes
-p305
+p309
 sg25
 g26
 ((I2014
@@ -979,12 +992,12 @@ I53
 I0
 I307
 I0
-tp306
-(dp307
-tp308
-Rp309
+tp310
+(dp311
+tp312
+Rp313
 sg31
-(lp310
+(lp314
 sg33
 g26
 ((I2014
@@ -996,28 +1009,28 @@ I26
 I0
 I307
 I0
-tp311
-(dp312
-tp313
-Rp314
-sbsa(dp315
+tp315
+(dp316
+tp317
+Rp318
+sbsa(dp319
 g14
 I00
 sg15
-(lp316
-F258.8326693227092
-aF146.02390438247014
+(lp320
+F155.50597609561743
+aF150.3745019920319
 asg17
 (itiddlywiki
 Tiddler
-p317
-(dp318
+p321
+(dp322
 g21
 V/% Place your story's setup code in this passage.\u000aAny macros in this passage will be run before the Start passage (or any passage you wish to Test Play) is run. %/\u000a\u000a<<set $haveBeackpack = false; $haveKnife = false; $haveCrowbar = false; $insanity = 0>>
-p319
+p323
 sg23
 VStoryInit
-p320
+p324
 sg25
 g26
 ((I2014
@@ -1029,12 +1042,12 @@ I42
 I0
 I307
 I0
-tp321
-(dp322
-tp323
-Rp324
+tp325
+(dp326
+tp327
+Rp328
 sg31
-(lp325
+(lp329
 sg33
 g26
 ((I2014
@@ -1046,28 +1059,28 @@ I52
 I0
 I307
 I0
-tp326
-(dp327
-tp328
-Rp329
-sbsa(dp330
+tp330
+(dp331
+tp332
+Rp333
+sbsa(dp334
 g14
 I00
 sg15
-(lp331
+(lp335
 F850.5418326693228
 aF103.32669322709168
 asg17
 (itiddlywiki
 Tiddler
-p332
-(dp333
+p336
+(dp337
 g21
 VYou pick up the backpack and rummage through it. It doesn't contain anything that might be useful to you but you keep it so that you can store stuff later. <<set $haveBackpack = true>>
-p334
+p338
 sg23
 VBackpack
-p335
+p339
 sg25
 g26
 ((I2014
@@ -1079,12 +1092,12 @@ I55
 I0
 I307
 I0
-tp336
-(dp337
-tp338
-Rp339
+tp340
+(dp341
+tp342
+Rp343
 sg31
-(lp340
+(lp344
 sg33
 g26
 ((I2014
@@ -1096,28 +1109,28 @@ I58
 I0
 I307
 I0
-tp341
-(dp342
-tp343
-Rp344
-sbsa(dp345
+tp345
+(dp346
+tp347
+Rp348
+sbsa(dp349
 g14
 I00
 sg15
-(lp346
+(lp350
 F994.1115537848606
 aF399.16733067729115
 asg17
 (itiddlywiki
 Tiddler
-p347
-(dp348
+p351
+(dp352
 g21
 V<<if $haveBackpack>> After having a can of what you think are peaches you put the rest of the food and the knife into the backpack. <<set $haveKnife = true>> <<else>>You need to find something to store them in first. <<endif>>
-p349
+p353
 sg23
 VKnife
-p350
+p354
 sg25
 g26
 ((I2014
@@ -1129,12 +1142,12 @@ I51
 I0
 I307
 I0
-tp351
-(dp352
-tp353
-Rp354
+tp355
+(dp356
+tp357
+Rp358
 sg31
-(lp355
+(lp359
 sg33
 g26
 ((I2014
@@ -1146,28 +1159,28 @@ I0
 I0
 I307
 I0
-tp356
-(dp357
-tp358
-Rp359
-sbsa(dp360
+tp360
+(dp361
+tp362
+Rp363
+sbsa(dp364
 g14
 I00
 sg15
-(lp361
+(lp365
 F770.0557768924305
 aF648.239043824701
 asg17
 (itiddlywiki
 Tiddler
-p362
-(dp363
+p366
+(dp367
 g21
 V<<if $haveBackpack>> You put the crowbar safely in your backpack.<<set $haveCrowbar = true>><<else>> You need something to put the crowbar in first.<<endif>>
-p364
+p368
 sg23
 VCrowbar
-p365
+p369
 sg25
 g26
 ((I2014
@@ -1179,12 +1192,12 @@ I41
 I0
 I307
 I0
-tp366
-(dp367
-tp368
-Rp369
+tp370
+(dp371
+tp372
+Rp373
 sg31
-(lp370
+(lp374
 sg33
 g26
 ((I2014
@@ -1196,28 +1209,46 @@ I0
 I0
 I307
 I0
-tp371
-(dp372
-tp373
-Rp374
-sbsa(dp375
+tp375
+(dp376
+tp377
+Rp378
+sbsa(dp379
 g14
 I00
 sg15
-(lp376
+(lp380
 F1830.792828685258
 aF486.4860557768922
 asg17
 (itiddlywiki
 Tiddler
-p377
-(dp378
+p381
+(dp382
 g21
-g293
+VThe first thing that greets you as you exit the door is a large grapphiti that reads a fimiliar phrase /%change styling %/"NOT THERE YET" and an arrow pointing to the left. The hairs stand up on the back of your neck as you try and shake a strange feeling that somone is watching you. <<set $insanity += 5>> A cold wind blows through your body and chills your bones. "I should find a coat" you say as you hold yourself for warmth. You trudge along as the skys quickly become overcast causing it to get suddenly and unnaturally darker. You hurridly follow to where the [[arrow points to|Campsite]].
+p383
 sg23
 VStreet
-p379
+p384
 sg25
+g26
+((I2014
+I11
+I3
+I20
+I12
+I25
+I0
+I307
+I0
+tp385
+(dp386
+tp387
+Rp388
+sg31
+(lp389
+sg33
 g26
 ((I2014
 I11
@@ -1228,18 +1259,87 @@ I26
 I0
 I307
 I0
-tp380
-(dp381
-tp382
-Rp383
+tp390
+(dp391
+tp392
+Rp393
+sbsa(dp394
+g14
+I00
+sg15
+(lp395
+F1837.0119521912347
+aF49.7250996015935
+asg17
+(itiddlywiki
+Tiddler
+p396
+(dp397
+g21
+V
+p398
+sg23
+VFire Escape
+p399
+sg25
+g26
+((I2014
+I11
+I3
+I19
+I46
+I39
+I0
+I307
+I0
+tp400
+(dp401
+tp402
+Rp403
 sg31
-(lp384
+(lp404
 sg33
-g383
+g403
+sbsa(dp405
+g14
+I01
+sg15
+(lp406
+F2010.2549800796796
+aF489.7490039840636
+asg17
+(itiddlywiki
+Tiddler
+p407
+(dp408
+g21
+g398
+sg23
+VCampsite
+p409
+sg25
+g26
+((I2014
+I11
+I3
+I20
+I12
+I29
+I0
+I307
+I0
+tp410
+(dp411
+tp412
+Rp413
+sg31
+(lp414
+sg33
+g413
 sbsasS'scale'
-p385
+p415
 F0.9194139194139194
 sS'snapping'
-p386
+p416
 I00
 ss.
